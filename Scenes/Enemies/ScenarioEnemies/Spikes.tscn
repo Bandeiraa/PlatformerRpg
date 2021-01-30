@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Enemies/ScenarioEnemies/Spikes.gd" type="Script" id=1]
+
+[node name="Spikes" type="Area2D"]
+collision_layer = 4
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.8, 0.8 )
+region_rect = Rect2( 70, 0, 50, 70 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.0641596, 1.95143 )
+scale = Vector2( 0.629729, 0.757308 )
+polygon = PoolVector2Array( -16.0318, 28.2545, -16.5936, -10.3269, -15.2826, -21.9388, -12.6606, -27.3701, 7.192, -28.3066, 12.4361, -27.7447, 15.0581, -16.882, 16.1818, -6.95572, 15.9946, 28.6291 )
+[connection signal="area_entered" from="." to="." method="_on_Spikes_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Spikes_body_entered"]

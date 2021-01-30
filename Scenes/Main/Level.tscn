@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Character/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Main/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Interface/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Main/Level.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50000, 10 )
+
+[node name="Level" type="Node2D" groups=[
+"Persist",
+]]
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 33, 164 )
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 26.727, 189.386 )
+shape = SubResource( 1 )
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Skeletons" type="Node" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="AutoSave" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+[connection signal="damage_taken" from="." to="Player" method="_on_Level_damage_taken"]
+[connection signal="death_animation" from="." to="Player" method="_on_Level_death_animation"]
+[connection signal="timeout" from="AutoSave" to="." method="_on_AutoSave_timeout"]

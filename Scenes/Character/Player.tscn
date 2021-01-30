@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Character/PlayerAnimation.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Character/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Character/AttackArea.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.58947
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 32, 145.309 )
+collision_mask = 28
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" parent="." instance=ExtResource( 1 )]
+animation = "Death"
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.841846, 0 )
+shape = SubResource( 1 )
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 128, -69.0537 )
+current = true
+limit_top = 0
+limit_bottom = 0
+smoothing_enabled = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+script = ExtResource( 3 )
+[connection signal="animation" from="." to="AnimatedSprite" method="_on_Player_Animate"]
+[connection signal="death" from="." to="AnimatedSprite" method="_on_Player_death"]
+[connection signal="took_damage" from="." to="AnimatedSprite" method="_on_Player_took_damage"]
+[connection signal="attack" from="AnimatedSprite" to="AttackArea" method="_on_AnimatedSprite_attack"]
+[connection signal="attackFinished" from="AnimatedSprite" to="AttackArea" method="_on_AnimatedSprite_attackFinished"]
+[connection signal="kill_process" from="AnimatedSprite" to="." method="_on_AnimatedSprite_kill_process"]
+[connection signal="revive_process" from="AnimatedSprite" to="." method="_on_AnimatedSprite_revive_process"]
+[connection signal="rightAttack" from="AnimatedSprite" to="AttackArea" method="_on_AnimatedSprite_rightAttack"]

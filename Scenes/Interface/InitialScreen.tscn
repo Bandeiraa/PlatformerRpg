@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Interface/InitialScreen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Interface/GUI-Kit-Pack-Free_61.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/Interface/GUI-Kit-Pack-Free_58.png" type="Texture" id=3]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 67.0
+margin_top = 26.9468
+margin_right = 371.0
+margin_bottom = 125.947
+rect_scale = Vector2( 0.3, 0.4 )
+mouse_filter = 2
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnotherButton" type="TextureRect" parent="."]
+margin_left = 88.0013
+margin_top = 42.2168
+margin_right = 230.001
+margin_bottom = 109.217
+rect_scale = Vector2( 1, 0.5 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnotherButton2" type="TextureRect" parent="."]
+margin_left = 88.0013
+margin_top = 91.0388
+margin_right = 230.001
+margin_bottom = 158.039
+rect_scale = Vector2( 1, 0.5 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame" type="Button" parent="."]
+margin_left = 110.42
+margin_top = 49.37
+margin_right = 210.42
+margin_bottom = 69.37
+text = "New Game"
+flat = true
+
+[node name="ContinueButton" type="Button" parent="."]
+margin_left = 110.0
+margin_top = 99.6293
+margin_right = 210.0
+margin_bottom = 119.629
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+disabled = true
+enabled_focus_mode = 0
+text = "Continue"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
