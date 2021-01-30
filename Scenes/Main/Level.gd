@@ -78,7 +78,7 @@ func spawnSkeletons():
 		skeletons.add_child(skeletonSpawn)
 		skeletonSpawn.position = Vector2(skeletonsOffset * (i + 1), 160)
 		print(skeletonSpawn.position)
-		
+		skeletonSpawn.connect("dead", self, "skeletonExp")
 
 #LOAD FUNCTIONS
 func loadPlayerPosition():
@@ -170,6 +170,7 @@ func _on_AutoSave_timeout():
 	Saved.storedData.storedCoins = coinsList
 	Saved.storedData.storedSpikes = spikesList
 	Saved.save()
+	print("Coins: ", coin)
 	
 	
 #INCREASE COINS COUNT
@@ -181,3 +182,7 @@ func increase_coins():
 		coin += randi() % 7 + 3
 		update_GUI()
 		print(coinsList)
+		
+		
+func skeletonExp():
+	$Player.on_level_up()

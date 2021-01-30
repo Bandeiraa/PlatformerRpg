@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 var motion = Vector2()
 var sliding 
+var level = 1
 
 const SPEED = 80
 const JUMP_SPEED = 350
@@ -60,3 +61,8 @@ func _on_Level_death_animation():
 
 func _on_Level_damage_taken():
 	emit_signal("took_damage")
+	
+	
+func on_level_up():
+	level += 1
+	print("Current Level: ", level)
