@@ -2,7 +2,10 @@ extends KinematicBody2D
 
 var motion = Vector2()
 var sliding 
+
 var level = 1
+var total_lvl_exp = 10
+var current_exp = 0
 
 const SPEED = 80
 const JUMP_SPEED = 350
@@ -19,7 +22,6 @@ func _physics_process(_delta):
 	move()
 	animate()
 	sliding = move_and_slide(motion, FLOOR_DIRECTION) #Motion = Linear Velocity
-	
 	
 func move():
 	if Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
@@ -63,6 +65,15 @@ func _on_Level_damage_taken():
 	emit_signal("took_damage")
 	
 	
-func on_level_up():
+func on_exp_received(exp_received):
+	current_exp += exp_received 
+	total_lvl_exp = (10 * level) * 1.5
+	print("Exp para upar: ", total_lvl_exp - current_exp)
+	if total_lvl_exp <= current_exp:
+		level_up()
+		
+		
+func level_up():
 	level += 1
+	current_exp = 0
 	print("Current Level: ", level)

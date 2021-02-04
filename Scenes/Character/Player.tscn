@@ -7,7 +7,9 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.58947
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 position = Vector2( 32, 145.309 )
 collision_mask = 28
 script = ExtResource( 2 )
@@ -24,7 +26,7 @@ position = Vector2( -0.841846, 0 )
 shape = SubResource( 1 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 128, -69.0537 )
+position = Vector2( 0.720764, -69.0537 )
 current = true
 limit_top = 0
 limit_bottom = 0

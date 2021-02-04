@@ -6,15 +6,19 @@ const FILE_NAME = "res://save_data.save"
 var position = Vector2() 
 var health = 5 
 var coins = 0
+var currentGameLevel = 1
 var coinOffset = 0
 var storedIndex = 0
 var coinSizeAux = 0
 var spikesSizeAux = 0
 var storedSpikeIndex = 0
+var storedSkeletonIndex = 0
 var storedCoins = []
 var storedSpikes = []
+var storedSkeletons = []
 
 var storedData = {
+	"storedSkeletonIndex": storedSkeletonIndex,
 	"storedSpikeIndex": storedSpikeIndex,
 	"spikesSizeAux": spikesSizeAux,
 	"coinSizeAux": coinSizeAux,
@@ -22,10 +26,12 @@ var storedData = {
 	"coinOffset": coinOffset,
 	"storedSpikes": storedSpikes,
 	"storedCoins": storedCoins,
+	"storedSkeletons": storedSkeletons,
 	"coins": coins,
 	"pos_x": position.x,
 	"pos_y": position.y,
-	"current_health": health
+	"current_health": health,
+	"currentGameLevel": currentGameLevel
 }
 
 func save():
