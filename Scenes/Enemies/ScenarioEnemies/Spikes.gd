@@ -14,7 +14,7 @@ func _ready():
 func _on_Spikes_body_entered(_body):
 	randomize()
 	spike_damage = randi() % 20 + 1
-	get_tree().call_group("Gamecomponents", "hurt", spike_damage)
+	get_tree().call_group("Player", "hurt", spike_damage)
 
 
 func _on_Spikes_area_entered(area):

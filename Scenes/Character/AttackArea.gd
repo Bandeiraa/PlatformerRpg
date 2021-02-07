@@ -11,14 +11,14 @@ func _on_AnimatedSprite_attack():
 	yield(get_tree().create_timer(0.3), "timeout")
 	collision = collider.instance()
 	add_child(collision)
-	position = Vector2(-25, 0)
+	position = Vector2(-31, 0)
 	
 	
 func _on_AnimatedSprite_rightAttack():
 	yield(get_tree().create_timer(0.3), "timeout")
 	collision = collider.instance()
 	add_child(collision)
-	position = Vector2(0, 0)
+	position = Vector2(10, 0)
 
 
 func _on_AnimatedSprite_attackFinished():

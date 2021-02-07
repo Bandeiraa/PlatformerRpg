@@ -3,9 +3,12 @@ extends KinematicBody2D
 var motion = Vector2()
 var sliding 
 
+var player_damage
 var level = 1
 var total_lvl_exp = 10
 var current_exp = 0
+
+export var life = 100
 
 const SPEED = 80
 const JUMP_SPEED = 350
@@ -57,18 +60,14 @@ func _on_AnimatedSprite_revive_process():
 	set_physics_process(true)
 
 
-func _on_Level_death_animation():
-	emit_signal("death")
-
-
 func _on_Level_damage_taken():
 	emit_signal("took_damage")
 	
 	
 func on_exp_received(exp_received):
+	print(exp_received)
 	current_exp += exp_received 
 	total_lvl_exp = (10 * level) * 1.5
-	print("Exp para upar: ", total_lvl_exp - current_exp)
 	if total_lvl_exp <= current_exp:
 		level_up()
 		
@@ -76,4 +75,15 @@ func on_exp_received(exp_received):
 func level_up():
 	level += 1
 	current_exp = 0
-	print("Current Level: ", level)
+	
+	
+func hurt(damage):
+	life -= damage
+	get_tree().call_group("GUI", "update_GUI", life)
+	if life <= 0:
+		emit_signal("death")
+
+
+func _on_SendAttackDamage():
+	randomize()
+	player_damage = randi() % 10 + 1

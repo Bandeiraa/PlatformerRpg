@@ -37,6 +37,4 @@ shape = SubResource( 1 )
 [node name="AutoSave" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
-[connection signal="damage_taken" from="." to="Player" method="_on_Level_damage_taken"]
-[connection signal="death_animation" from="." to="Player" method="_on_Level_death_animation"]
 [connection signal="timeout" from="AutoSave" to="." method="_on_AutoSave_timeout"]

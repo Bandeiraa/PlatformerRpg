@@ -1,8 +1,5 @@
 extends Node2D
 
-var lives = 100
-var maxHealth = 100
-var spikeDamage = 20
 var coin = 0
 var decreaseCount = 0
 var aux = 0
@@ -11,7 +8,6 @@ var coinsList = []
 var spikesList = []
 var skeletonsList = []
 var file = File.new()
-
 
 onready var spikes = get_node("Spikes")
 onready var skeletons = get_node("Skeletons")
@@ -22,9 +18,6 @@ onready var spikesInstanced = preload("res://Scenes/Enemies/ScenarioEnemies/Spik
 onready var coinsInstanced = preload("res://Scenes/Environments/Coin.tscn")
 onready var skeletonsInstanced = preload("res://Scenes/Enemies/WalkEnemies/Skeleton.tscn")
 
-signal damage_taken
-signal death_animation
-
 func _ready():
 	loadData()
 	auto_save.start()
@@ -34,9 +27,8 @@ func _ready():
 		loadCoinsPosition()
 		loadSpikesPosition()
 		loadSkeletonsPosition()
-		lives = Saved.storedData.health
+		#lives = Saved.storedData.health
 		coin = Saved.storedData.coins
-		update_GUI()
 	else:
 		randomize()
 		spawnCoins()
@@ -72,7 +64,7 @@ func spawnSpikes():
 		
 func spawnSkeletons():
 	var levelSize = Vector2(5000 * Saved.storedData.currentGameLevel, 0)
-	var skeletonList = [1, 2, 4, 5, 8, 10]
+	var skeletonList = [4, 5, 8, 10]
 	var skeletons_Spawner = (randi() % skeletonList.size() * Saved.storedData.currentGameLevel)
 	var skeletonsOffset = levelSize.x/skeletonList[skeletons_Spawner]
 	for i in skeletonList[skeletons_Spawner]:
@@ -164,22 +156,9 @@ func loadSkeletonsPosition():
 		print(skeletonSpawn.position)
 	pass
 	
-	
-#UPDATE INTERFACE HUD
-func update_GUI():
-	get_tree().call_group("GUI", "update_GUI", lives, coin)
+
 	
 	
-#DAMAGE TAKEN
-func hurt(damage):
-	#print(damage)
-	lives -= damage
-	update_GUI()
-	emit_signal("damage_taken")
-	if lives <= 0:
-		emit_signal("death_animation")
-		
-		
 #GAME OVER SCREEN
 func game_over():
 	if(file.file_exists("res://save_data.save")):
@@ -195,7 +174,7 @@ func _on_AutoSave_timeout():
 	Saved.storedData.pos_x = player_position.x
 	Saved.storedData.pos_y = 164
 	Saved.storedData.coins = coin
-	Saved.storedData.health = lives
+	#Saved.storedData.health = lives
 	Saved.storedData.storedCoins = coinsList
 	Saved.storedData.storedSpikes = spikesList
 	Saved.storedData.storedSkeletons = skeletonsList
@@ -210,13 +189,16 @@ func increase_coins():
 	else:
 		coinsList.remove(0)
 		coin += randi() % 7 + 3
-		update_GUI()
-		#print(coinsList)
+		get_tree().call_group("GUI", "update_COIN", coin)
 		
 		
 func skeletonExp(exp_received):
-	print("Exp received: ", exp_received)
 	$Player.on_exp_received(exp_received)
+	update_EXP(exp_received)
+	
+	
+func update_EXP(exp_received):
+	get_tree().call_group("GUI", "update_EXP", exp_received)
 
 
 func loadData():

@@ -5,9 +5,11 @@ signal revive_process
 signal attack
 signal rightAttack
 signal attackFinished
+signal sendAttackDamage
 
 var key = false
 var deathKey = false
+
 onready var animationPlayer = get_node("AnimationPlayer")
 onready var damageAnimator = get_node("Animator")
 
@@ -48,6 +50,7 @@ func randomAttack():
 	randomize()
 	var randomValue = randi() % 2 + 1
 	play("Attack0" + str(randomValue))
+	emit_signal("sendAttackDamage")
 	
 
 func _on_Player_death():

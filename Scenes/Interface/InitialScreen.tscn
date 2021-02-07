@@ -1,8 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Interface/InitialScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Interface/GUI-Kit-Pack-Free_61.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Interface/GUI-Kit-Pack-Free_58.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Main/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Sprites/Interface/TwitterIcon.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Interface/TwitterIconHover.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Interface/TwitterIconPressed.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIconPressed.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIconHover.png" type="Texture" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "SceneTransition"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -320, 0 ) ]
+}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -72,5 +110,46 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "SlideBackground"
+anims/SceneTransition = SubResource( 1 )
+anims/SlideBackground = SubResource( 2 )
+
+[node name="TwitterButton" type="TextureButton" parent="."]
+margin_left = 8.90899
+margin_top = 167.256
+margin_right = 40.909
+margin_bottom = 199.256
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstagramButton" type="TextureButton" parent="."]
+margin_left = 31.9195
+margin_top = 167.256
+margin_right = 63.9195
+margin_bottom = 199.256
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
 [connection signal="pressed" from="NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="TwitterButton" to="." method="_on_TwitterButton_pressed"]
+[connection signal="pressed" from="InstagramButton" to="." method="_on_InstagramButton_pressed"]

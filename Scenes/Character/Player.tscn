@@ -28,11 +28,13 @@ shape = SubResource( 1 )
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 0.720764, -69.0537 )
 current = true
+limit_left = 0
 limit_top = 0
 limit_bottom = 0
 smoothing_enabled = true
 
 [node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 30
 script = ExtResource( 3 )
 [connection signal="animation" from="." to="AnimatedSprite" method="_on_Player_Animate"]
 [connection signal="death" from="." to="AnimatedSprite" method="_on_Player_death"]
@@ -42,3 +44,4 @@ script = ExtResource( 3 )
 [connection signal="kill_process" from="AnimatedSprite" to="." method="_on_AnimatedSprite_kill_process"]
 [connection signal="revive_process" from="AnimatedSprite" to="." method="_on_AnimatedSprite_revive_process"]
 [connection signal="rightAttack" from="AnimatedSprite" to="AttackArea" method="_on_AnimatedSprite_rightAttack"]
+[connection signal="sendAttackDamage" from="AnimatedSprite" to="." method="_on_SendAttackDamage"]
