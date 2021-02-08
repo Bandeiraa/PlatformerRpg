@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scenes/Interface/InitialScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/Interface/GUI-Kit-Pack-Free_61.png" type="Texture" id=2]
@@ -10,9 +10,35 @@
 [ext_resource path="res://Assets/Sprites/Interface/InstagramIcon.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Sprites/Interface/InstagramIconPressed.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Sprites/Interface/InstagramIconHover.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/Interface/TwitchIcons/TwitchIconPressed.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Interface/TwitchIcons/TwitchIcon.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/Interface/TwitchIcons/TwitchIconHover.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Interface/YoutubeIconHover.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Interface/YoutubeIcon.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Interface/YoutubeIconPressed.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Interface/BackgrounButton.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Fonts/Exo-Black.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://Assets/Sprites/Interface/TwitchIcons/TwitchIconBlink3.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/Interface/TwitchIcons/TwitchIconBlink2.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Interface/TwitchIcons/TwitchIconBlink1.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Interface/TwitterIcon2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/Interface/YoutubeIcon3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/Interface/YoutubeIcon2.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/Interface/TwitterIcon1.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/Interface/TwitterIcon3.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Interface/YoutubeIcon1.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon2.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon4.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon7.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon1.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon6.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon3.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Sprites/Interface/InstagramIcon5.png" type="Texture" id=34]
 
-[sub_resource type="Animation" id=1]
-resource_name = "SceneTransition"
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 18 )
+
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeRect:color")
 tracks/0/interp = 1
@@ -26,7 +52,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 10.0
 loop = true
 tracks/0/type = "value"
@@ -42,6 +68,83 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -320, 0 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+length = 3.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("NewGame/Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.807843, 0.690196, 0.690196, 1 ), Color( 0.458824, 0.439216, 0.439216, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ContinueButton/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.75, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.807843, 0.690196, 0.690196, 1 ), Color( 0.458824, 0.439216, 0.439216, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TwitchButton:texture_normal")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ ExtResource( 12 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 12 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TwitterButton:texture_normal")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 5 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 5 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 25 ), ExtResource( 5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("YoutubeButton:texture_normal")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1.45, 1.55, 1.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 15 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 27 ), ExtResource( 15 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("InstagramButton:texture_normal")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 8 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 8 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 30 ), ExtResource( 8 ), ExtResource( 31 ), ExtResource( 28 ), ExtResource( 33 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 30 ) ]
+}
+
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,6 +154,7 @@ __meta__ = {
 }
 
 [node name="ButtonContainer" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 67.0
@@ -65,6 +169,7 @@ __meta__ = {
 }
 
 [node name="AnotherButton" type="TextureRect" parent="."]
+visible = false
 margin_left = 88.0013
 margin_top = 42.2168
 margin_right = 230.001
@@ -77,6 +182,7 @@ __meta__ = {
 }
 
 [node name="AnotherButton2" type="TextureRect" parent="."]
+visible = false
 margin_left = 88.0013
 margin_top = 91.0388
 margin_right = 230.001
@@ -88,25 +194,64 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGame" type="Button" parent="."]
-margin_left = 110.42
-margin_top = 49.37
-margin_right = 210.42
-margin_bottom = 69.37
-text = "New Game"
-flat = true
+[node name="NewGame" type="TextureButton" parent="."]
+margin_left = 112.0
+margin_top = 32.0
+margin_right = 208.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 48, 16 )
+texture_normal = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ContinueButton" type="Button" parent="."]
-margin_left = 110.0
-margin_top = 99.6293
-margin_right = 210.0
-margin_bottom = 119.629
+[node name="Label" type="Label" parent="NewGame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -16.0
+margin_right = 47.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.488875, 0.470356, 0.470356, 1 )
+text = "New Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" type="TextureButton" parent="."]
+margin_left = 112.0
+margin_top = 80.0
+margin_right = 208.0
+margin_bottom = 112.0
+rect_pivot_offset = Vector2( 48, 16 )
 focus_mode = 0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
 disabled = true
 enabled_focus_mode = 0
+texture_normal = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ContinueButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.58
+margin_top = -16.0
+margin_right = 45.42
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 47.5, 16 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.488875, 0.470356, 0.470356, 1 )
 text = "Continue"
-flat = true
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,14 +260,18 @@ __meta__ = {
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 autoplay = "SlideBackground"
-anims/SceneTransition = SubResource( 1 )
-anims/SlideBackground = SubResource( 2 )
+anims/SceneTransition = SubResource( 2 )
+anims/SlideBackground = SubResource( 3 )
+
+[node name="IconsAnimator" type="AnimationPlayer" parent="."]
+autoplay = "ChangeScale"
+anims/ChangeScale = SubResource( 4 )
 
 [node name="TwitterButton" type="TextureButton" parent="."]
-margin_left = 8.90899
-margin_top = 167.256
-margin_right = 40.909
-margin_bottom = 199.256
+margin_left = 9.0
+margin_top = 167.0
+margin_right = 41.0
+margin_bottom = 199.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 7 )
@@ -132,14 +281,40 @@ __meta__ = {
 }
 
 [node name="InstagramButton" type="TextureButton" parent="."]
-margin_left = 31.9195
-margin_top = 167.256
-margin_right = 63.9195
-margin_bottom = 199.256
+margin_left = 32.0
+margin_top = 167.0
+margin_right = 64.0
+margin_bottom = 199.0
 rect_scale = Vector2( 0.5, 0.5 )
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TwitchButton" type="TextureButton" parent="."]
+margin_left = 55.0
+margin_top = 167.256
+margin_right = 87.0
+margin_bottom = 199.256
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YoutubeButton" type="TextureButton" parent="."]
+margin_left = 78.0
+margin_top = 167.0
+margin_right = 110.0
+margin_bottom = 199.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -153,3 +328,5 @@ color = Color( 0, 0, 0, 0 )
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="TwitterButton" to="." method="_on_TwitterButton_pressed"]
 [connection signal="pressed" from="InstagramButton" to="." method="_on_InstagramButton_pressed"]
+[connection signal="pressed" from="TwitchButton" to="." method="_on_TwitchButton_pressed"]
+[connection signal="pressed" from="YoutubeButton" to="." method="_on_YoutubeButton_pressed"]

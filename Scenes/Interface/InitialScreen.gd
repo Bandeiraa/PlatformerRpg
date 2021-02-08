@@ -34,3 +34,11 @@ func _on_TwitterButton_pressed():
 
 func _on_InstagramButton_pressed():
 	social_media = OS.shell_open("https://www.instagram.com/davi_bandeira_96/")
+
+
+func _on_TwitchButton_pressed():
+	social_media = OS.shell_open("https://www.twitch.tv/davibandeiraa")
+
+
+func _on_YoutubeButton_pressed():
+	social_media = OS.shell_open("https://www.youtube.com/channel/UCvyBHlurg_4RiSZtu0sOkZA")

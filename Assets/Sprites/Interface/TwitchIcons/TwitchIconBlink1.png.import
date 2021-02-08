@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/InstagramIconPressed.png-d47b8c7215c24c3063192a4918277f51.stex"
+path="res://.import/TwitchIconBlink1.png-07a12d55846da0d73d0dd58a779df314.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Interface/InstagramIconPressed.png"
-dest_files=[ "res://.import/InstagramIconPressed.png-d47b8c7215c24c3063192a4918277f51.stex" ]
+source_file="res://Assets/Sprites/Interface/TwitchIcons/TwitchIconBlink1.png"
+dest_files=[ "res://.import/TwitchIconBlink1.png-07a12d55846da0d73d0dd58a779df314.stex" ]
 
 [params]
 
