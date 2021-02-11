@@ -9,13 +9,15 @@ export (Vector2) var skeleton_velocity = Vector2(10, 0)
 
 var playerPosition = Vector2.ZERO
 var playerDamage = 0
-
 var skeleton_damage
+
+var deathKey = false
 var key = false
 var stateFlag = false
 
 #IF EXISTENT, PERSIST UPGRADED SKELETONS(BASED ON GAME LEVEL)
 func _ready():
+	animator.play("Idle")
 	Saved.loadData()
 	skeleton_health = skeleton_health * Saved.storedData.currentGameLevel
 	
@@ -35,14 +37,16 @@ func IdleWalk():
 	
 #RECURSIVE CALL
 func on_Animation_Finished():
-	if stateFlag == true:
-		IdleWalk()
-		animator.play("Walk")
-		stateFlag = false
+	if deathKey == false:
+		if stateFlag == true:
+			IdleWalk()
+			animator.play("Walk")
+			stateFlag = false
+		else:
+			animator.play("AttackAnim")
+			get_node("AttackArea2D").instance_Collider()
 	else:
-		animator.play("AttackAnim")
-		get_node("AttackArea2D").instance_Collider()
-		
+		print("Aqui")
 		
 func idleCall():
 	key = false
@@ -59,6 +63,9 @@ func hurt():
 	skeleton_health -= playerDamage
 	print(skeleton_health)
 	if skeleton_health <= 0:
+		deathKey = true
+		#$AlertArea2D/CollisionShape2D.queue_free()
+		#$ChaseArea2D/CollisionShape2D.queue_free()
 		can_kill_enemy()
 		
 		
@@ -69,6 +76,8 @@ func can_kill_enemy():
 	var random_exp = randi() % 10 + 1
 	emit_signal("dead", random_exp)
 	animator.play("DeathAnim")
+	yield(get_tree().create_timer(1.0), "timeout")
+	queue_free()
 	
 	
 func on_Death_Animation_Finished():

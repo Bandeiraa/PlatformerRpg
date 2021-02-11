@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var joystick = get_parent().get_node("HUD").get_node("Joystick/Joystick_button")#get_node("Joystick")#.get_node("HUD").
+#onready var joystick = get_parent().get_node("HUD").get_node("Joystick/Joystick_button")#get_node("Joystick")#.get_node("HUD").
 var motion = Vector2()
 var sliding 
 
@@ -25,8 +25,8 @@ func _physics_process(_delta):
 	jump()
 	move()
 	animate()
-	sliding = move_and_slide(Vector2(joystick.get_value().x * 100, motion.y), FLOOR_DIRECTION) #Motion = Linear Velocity
-	
+	sliding = move_and_slide(motion, FLOOR_DIRECTION) #Motion = Linear Velocity
+	#Vector2(joystick.get_value().x * 100, motion.y)
 	
 func move():
 	if Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
@@ -34,8 +34,8 @@ func move():
 	elif Input.is_action_pressed("Right") and not Input.is_action_pressed("Left"):
 		motion.x = SPEED #Positive Speed >>>>
 	else:
-		motion.x = joystick.get_value().x
-		
+		#motion.x = joystick.get_value().x
+		motion.x = 0
 		
 func jump():
 	if Input.is_action_pressed("Jump") and is_on_floor():

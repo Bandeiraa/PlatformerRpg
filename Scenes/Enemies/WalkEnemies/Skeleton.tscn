@@ -88,6 +88,11 @@ animations = [ {
 "name": "Walk",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 34 ), ExtResource( 33 ), ExtResource( 3 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "DamageTaken",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 4 ), ExtResource( 40 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 50 ) ],
 "loop": true,
 "name": "DeathAnim",
@@ -97,11 +102,6 @@ animations = [ {
 "loop": true,
 "name": "Attack",
 "speed": 18.0
-}, {
-"frames": [ ExtResource( 34 ), ExtResource( 33 ), ExtResource( 3 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "DamageTaken",
-"speed": 10.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 61 ), ExtResource( 58 ), ExtResource( 60 ), ExtResource( 63 ), ExtResource( 62 ), ExtResource( 59 ) ],
 "loop": true,
@@ -317,8 +317,8 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.792655, 0 )
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 7
+animation = "DeathAnim"
+frame = 2
 playing = true
 offset = Vector2( -8, 0 )
 
@@ -328,7 +328,6 @@ position = Vector2( -6.5568, 6.88644 )
 shape = SubResource( 2 )
 
 [node name="AlertArea2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 30
 script = ExtResource( 8 )
 
@@ -336,7 +335,6 @@ script = ExtResource( 8 )
 shape = SubResource( 3 )
 
 [node name="ChaseArea2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 30
 script = ExtResource( 9 )
 
@@ -353,7 +351,7 @@ position = Vector2( -13.4997, 6.93131 )
 shape = SubResource( 5 )
 
 [node name="AttackArea2D" type="Area2D" parent="."]
-visible = false
+position = Vector2( -6.0919, 0 )
 collision_layer = 30
 script = ExtResource( 11 )
 
@@ -365,7 +363,6 @@ collision_layer = 30
 script = ExtResource( 12 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
-autoplay = "Idle"
 anims/AttackAnim = SubResource( 7 )
 anims/DeathAnim = SubResource( 8 )
 anims/DmgTakenAnim = SubResource( 9 )

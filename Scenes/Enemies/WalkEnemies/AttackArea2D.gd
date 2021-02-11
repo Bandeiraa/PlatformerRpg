@@ -14,6 +14,7 @@ func _on_AttackArea2D_body_entered(_body):
 
 func _on_AttackArea2D_body_exited(_body):
 	parent.stateFlag = true
+	print("Saiu")
 	
 	
 #SPAWN AND REMOVE ATTACK COLLIDER

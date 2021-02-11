@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Interface/HUD.gd" type="Script" id=2]
@@ -8,16 +8,10 @@
 [ext_resource path="res://Assets/Sprites/Interface/LeftDirectionButton.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Interface/AttackButton.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/Interface/JumpButton.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Sprites/Interface/Joystick/JoystickArea2.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Sprites/Interface/Joystick/JoystickAreaPressed2.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/Interface/Joystick_button.gd" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 5
 font_data = ExtResource( 4 )
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 32.0
 
 [node name="HUD" type="CanvasLayer" groups=[
 "GUI",
@@ -47,7 +41,7 @@ tint_progress = Color( 0.890196, 0.858824, 0.117647, 1 )
 
 [node name="CoinIcon" parent="ExpInterface" index="2"]
 visible = false
-frame = 2
+frame = 1
 
 [node name="CoinCount" parent="ExpInterface" index="3"]
 margin_left = 238.824
@@ -84,28 +78,17 @@ normal = ExtResource( 6 )
 action = "Left"
 
 [node name="AttackButton" type="TouchScreenButton" parent="."]
-position = Vector2( 360, 148 )
-scale = Vector2( 0.4, 0.4 )
+visible = false
+position = Vector2( 348, 136 )
+scale = Vector2( 0.6, 0.6 )
 normal = ExtResource( 7 )
 action = "Attack"
 
 [node name="JumpButton" type="TouchScreenButton" parent="."]
-position = Vector2( 360, 174 )
-scale = Vector2( 0.4, 0.4 )
+visible = false
+position = Vector2( 348, 164 )
+scale = Vector2( 0.6, 0.6 )
 normal = ExtResource( 8 )
 action = "Jump"
-
-[node name="Joystick" type="Sprite" parent="."]
-position = Vector2( 32, 160 )
-scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 9 )
-
-[node name="Joystick_button" type="TouchScreenButton" parent="Joystick"]
-position = Vector2( -10.6854, -8.78973 )
-scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 9 )
-pressed = ExtResource( 10 )
-shape = SubResource( 2 )
-script = ExtResource( 11 )
 
 [editable path="ExpInterface"]

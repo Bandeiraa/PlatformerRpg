@@ -15,7 +15,7 @@ onready var damageAnimator = get_node("Animator")
 
 func _on_Player_Animate(motion):
 	if deathKey == false:
-		if Input.is_action_just_pressed("Attack"): #ATTACK
+		if Input.is_action_just_pressed("Attack") and get_parent().is_on_floor(): #ATTACK
 			key = true
 			randomAttack()
 			animationPlayer.play("IdleCall(Attack)")
