@@ -8,14 +8,8 @@ var collision
 
 func _on_AttackArea2D_body_entered(_body):
 	parent.animator.play("AttackAnim")
-	if parent.playerPosition <= parent.position:
-		parent.get_node("AnimatedSprite").offset = Vector2(-18, -2.6)
-		parent.idleCall()
-		instance_Collider()
-	else:
-		parent.get_node("AnimatedSprite").offset = Vector2(3, -2.6)
-		parent.idleCall()
-		instance_Collider()
+	parent.idleCall()
+	instance_Collider()
 
 
 func _on_AttackArea2D_body_exited(_body):

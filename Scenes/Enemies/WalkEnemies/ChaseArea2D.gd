@@ -5,6 +5,7 @@ onready var parent = get_parent()
 #CHASE HIM
 func _on_ChaseArea2D_body_entered(_body):
 	parent.current_Body_Position()
+	parent.IdleWalk()
 	parent.animator.play("Walk")
 
 

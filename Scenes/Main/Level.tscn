@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Character/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Main/Background.tscn" type="PackedScene" id=2]
@@ -8,18 +8,21 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50000, 10 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 96 )
+
 [node name="Level" type="Node2D" groups=[
 "Persist",
 ]]
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 33, 160.997 )
+position = Vector2( 120.308, 155.47 )
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2( 0, -2.00226 )
+position = Vector2( 0, -8.37386 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
@@ -32,9 +35,19 @@ shape = SubResource( 1 )
 
 [node name="Skeletons" type="Node" parent="."]
 
+[node name="Portal" type="Node" parent="."]
+
+[node name="FinalLevelPortal" type="Area2D" parent="Portal"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/FinalLevelPortal"]
+position = Vector2( 0, 96 )
+shape = SubResource( 2 )
+
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="AutoSave" type="Timer" parent="."]
 wait_time = 10.0
-autostart = true
+[connection signal="save_level_info" from="." to="HUD" method="_on_Level_save_level_info"]
+[connection signal="body_entered" from="Portal/FinalLevelPortal" to="." method="_on_FinalLevelPortal_body_entered"]
 [connection signal="timeout" from="AutoSave" to="." method="_on_AutoSave_timeout"]

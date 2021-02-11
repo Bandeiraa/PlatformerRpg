@@ -9,6 +9,8 @@ var spikesList = []
 var skeletonsList = []
 var file = File.new()
 
+signal save_level_info
+
 onready var spikes = get_node("Spikes")
 onready var skeletons = get_node("Skeletons")
 onready var coins = get_node("Coins")
@@ -20,27 +22,32 @@ onready var skeletonsInstanced = preload("res://Scenes/Enemies/WalkEnemies/Skele
 
 func _ready():
 	loadData()
-	auto_save.start()
+	#auto_save.start()
 	add_to_group("Gamecomponents")
-	if(file.file_exists("res://save_data.save")):
-		loadPlayerPosition()
-		loadCoinsPosition()
-		loadSpikesPosition()
-		loadSkeletonsPosition()
+	#if(file.file_exists("res://save_data.save")):
+	#	loadPlayerPosition()
+	#	loadCoinsPosition()
+	#	loadSpikesPosition()
+	#	loadSkeletonsPosition()
 		#lives = Saved.storedData.health
-		coin = Saved.storedData.coins
-	else:
-		randomize()
-		spawnCoins()
-		spawnSpikes()
-		spawnSkeletons()
+	#	coin = Saved.storedData.coins
+	#else:
+	coin = Saved.storedData.coins
+	get_tree().call_group("GUI", "update_COIN", coin)
+	get_tree().call_group("GUI", "_ready")
+	randomize()
+	spawnCoins()
+	spawnSpikes()
+	spawnSkeletons()
 		
 		
 #SPAWN OBJECTS
 func spawnCoins():
 	var levelSize = Vector2(5000 * Saved.storedData.currentGameLevel, 0)
-	var coinList = [1, 2, 4, 5, 8, 10]
-	var coins_Spawner = randi() % coinList.size() * Saved.storedData.currentGameLevel
+	$Portal/FinalLevelPortal.position = levelSize + Vector2(100, 0)
+	print("Level Size: ", levelSize)
+	var coinList = [1 * Saved.storedData.currentGameLevel, 2 * Saved.storedData.currentGameLevel, 4 * Saved.storedData.currentGameLevel, 5 * Saved.storedData.currentGameLevel, 8 * Saved.storedData.currentGameLevel, 10 * Saved.storedData.currentGameLevel]
+	var coins_Spawner = randi() % coinList.size() 
 	var coinsOffset = levelSize.x/coinList[coins_Spawner]
 	Saved.storedData.coinOffset = coinsOffset
 	Saved.save()
@@ -58,22 +65,23 @@ func spawnSpikes():
 	for i in spikes_Spawner:
 		var spikeSpawn = spikesInstanced.instance()
 		spikes.add_child(spikeSpawn)
-		spikeSpawn.position = Vector2(spikesOffset * i, 184)
+		spikeSpawn.position = Vector2(spikesOffset * i, 174)
 		spikesList.append(spikeSpawn.position)
 		
 		
 func spawnSkeletons():
 	var levelSize = Vector2(5000 * Saved.storedData.currentGameLevel, 0)
-	var skeletonList = [4, 5, 8, 10]
-	var skeletons_Spawner = (randi() % skeletonList.size() * Saved.storedData.currentGameLevel)
+	var skeletonList = [4 * Saved.storedData.currentGameLevel, 5 * Saved.storedData.currentGameLevel, 8 * Saved.storedData.currentGameLevel, 10 * Saved.storedData.currentGameLevel]
+	var skeletons_Spawner = (randi() % skeletonList.size()) 
 	var skeletonsOffset = levelSize.x/skeletonList[skeletons_Spawner]
 	for i in skeletonList[skeletons_Spawner]:
 		var skeletonSpawn = skeletonsInstanced.instance()
 		skeletons.add_child(skeletonSpawn)
-		skeletonSpawn.position = Vector2(skeletonsOffset * (i + 1), 160)
+		skeletonSpawn.position = Vector2(skeletonsOffset * (i + 1), 152)
 		skeletonsList.append(skeletonSpawn.position)
 		print(skeletonSpawn.position)
 		skeletonSpawn.connect("dead", self, "skeletonExp")
+
 
 #LOAD FUNCTIONS
 func loadPlayerPosition():
@@ -203,3 +211,13 @@ func update_EXP(exp_received):
 
 func loadData():
 	Saved.loadData()
+
+
+func _on_FinalLevelPortal_body_entered(_body):
+	Saved.storedData.currentGameLevel += 1
+	Saved.storedData.coins = coin
+	emit_signal("save_level_info")
+	print("Current coins: ", coin)
+	print(Saved.storedData.currentGameLevel)
+	Saved.save()
+	var _reload_scene = get_tree().reload_current_scene()

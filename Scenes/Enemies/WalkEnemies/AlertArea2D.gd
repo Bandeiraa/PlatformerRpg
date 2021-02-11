@@ -10,4 +10,4 @@ func _on_AlertArea2D_body_entered(_body):
 
 
 func _on_AlertArea2D_body_exited(_body):
-	parent.animator.play("WalkAnim")
+	parent.animator.play("Idle")

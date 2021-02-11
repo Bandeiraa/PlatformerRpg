@@ -5,13 +5,11 @@ var can_click = false
 var social_media
 
 func _ready():
-	$ContinueButton.disabled = true
 	var file = File.new()
 	if(file.file_exists("res://save_data.save")):
-		$ContinueButton.disabled = false
-		$ContinueButton.set("custom_colors/font_color", Color(1, 1, 1, 1))
+		$ContinueButton.hide()
 	else:
-		$ContinueButton.set("custom_colors/font_color", Color(0.5, 0.5, 0.5, 1))
+		$ContinueButton.hide()
 		
 	
 func _on_NewGame_pressed():
@@ -42,3 +40,7 @@ func _on_TwitchButton_pressed():
 
 func _on_YoutubeButton_pressed():
 	social_media = OS.shell_open("https://www.youtube.com/channel/UCvyBHlurg_4RiSZtu0sOkZA")
+
+
+func _on_ConfigButton_pressed():
+	pass # Replace with function body.

@@ -11,8 +11,7 @@ var playerPosition = Vector2.ZERO
 var playerDamage = 0
 
 var skeleton_damage
-var leftKey = false
-var rightKey = false
+var key = false
 var stateFlag = false
 
 #IF EXISTENT, PERSIST UPGRADED SKELETONS(BASED ON GAME LEVEL)
@@ -25,31 +24,19 @@ func _ready():
 func _physics_process(_delta):
 	playerPosition = get_node("../..").get_child(0).get_position()
 	var _sliding
-	if leftKey == true:
-		rightKey = false
+	if key == true:
 		_sliding = move_and_slide(-skeleton_velocity)
-	if rightKey == true:
-		leftKey = false
-		_sliding = move_and_slide(+skeleton_velocity)
 		
 		
 #FLAGS TO MOVE
-func leftIdleWalk():
-	leftKey = true
+func IdleWalk():
+	key = true
 	
 	
-func rightIdleWalk():
-	rightKey = true
-	
-	
-func idleCall():
-	leftKey = false
-	rightKey = false
-		
-		
 #RECURSIVE CALL
 func on_Animation_Finished():
 	if stateFlag == true:
+		IdleWalk()
 		animator.play("Walk")
 		stateFlag = false
 	else:
@@ -57,19 +44,13 @@ func on_Animation_Finished():
 		get_node("AttackArea2D").instance_Collider()
 		
 		
+func idleCall():
+	key = false
+	
+	
 #VERIFY PLAYER POSITION BASED ON SKELETON POSITION
 func current_Body_Position():
-	if playerPosition <= position:
-		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.offset = Vector2(-10, 0)
-		get_node("AttackArea2D").attack_area.position = Vector2(-30, 0)
-		leftIdleWalk()
-		print(playerPosition)
-	else:
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.offset = Vector2(-2.5, 0)
-		get_node("AttackArea2D").attack_area.position = Vector2(30, 0)
-		rightIdleWalk()
+	get_node("AttackArea2D").attack_area.position = Vector2(-30, 0)
 
 
 #DAMAGE AND DEATH

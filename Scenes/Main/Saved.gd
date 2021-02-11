@@ -4,9 +4,12 @@ const FILE_NAME = "res://save_data.save"
 
 #Default Values
 var position = Vector2() 
+var key = false
 var health = 5 
 var coins = 0
 var currentGameLevel = 1
+var currentPlayerLevel = 1
+var currentExpBarValue = 0
 var coinOffset = 0
 var storedIndex = 0
 var coinSizeAux = 0
@@ -18,6 +21,9 @@ var storedSpikes = []
 var storedSkeletons = []
 
 var storedData = {
+	"key": key,
+	"currentExpBarValue": currentExpBarValue,
+	"currentPlayerLevel": currentPlayerLevel,
 	"storedSkeletonIndex": storedSkeletonIndex,
 	"storedSpikeIndex": storedSpikeIndex,
 	"spikesSizeAux": spikesSizeAux,

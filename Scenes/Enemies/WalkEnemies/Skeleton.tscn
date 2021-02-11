@@ -1,345 +1,132 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=88 format=2]
 
-[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton Idle.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle01.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemies/WalkEnemies/Skeleton.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton Hit.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton Dead.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton Walk.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton React.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton Attack.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit03.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death10.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk08.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_React/Skeleton_React01.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack16.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Enemies/WalkEnemies/AlertArea2D.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Enemies/WalkEnemies/ChaseArea2D.gd" type="Script" id=9]
 [ext_resource path="res://Scenes/Enemies/WalkEnemies/DamageTakenArea2D.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Enemies/WalkEnemies/AttackArea2D.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/Enemies/WalkEnemies/AttackAreaCollider.gd" type="Script" id=12]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 5 )
-region = Rect2( 22, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 5 )
-region = Rect2( 44, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 5 )
-region = Rect2( 66, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 5 )
-region = Rect2( 88, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 5 )
-region = Rect2( 110, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 5 )
-region = Rect2( 132, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 5 )
-region = Rect2( 154, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 5 )
-region = Rect2( 176, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 5 )
-region = Rect2( 198, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 5 )
-region = Rect2( 220, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 5 )
-region = Rect2( 242, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 5 )
-region = Rect2( 264, 0, 22, 33 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 4 )
-region = Rect2( 33, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 4 )
-region = Rect2( 66, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 4 )
-region = Rect2( 99, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 4 )
-region = Rect2( 132, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 4 )
-region = Rect2( 165, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 4 )
-region = Rect2( 198, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 4 )
-region = Rect2( 231, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 4 )
-region = Rect2( 264, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 4 )
-region = Rect2( 297, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 4 )
-region = Rect2( 330, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 4 )
-region = Rect2( 363, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 4 )
-region = Rect2( 396, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 4 )
-region = Rect2( 429, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 4 )
-region = Rect2( 462, 0, 33, 32 )
-
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 3 )
-region = Rect2( 30, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 3 )
-region = Rect2( 60, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 3 )
-region = Rect2( 90, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 3 )
-region = Rect2( 120, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 3 )
-region = Rect2( 150, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 3 )
-region = Rect2( 180, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 3 )
-region = Rect2( 210, 0, 30, 32 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 1 )
-region = Rect2( 24, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 1 )
-region = Rect2( 72, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 1 )
-region = Rect2( 120, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 1 )
-region = Rect2( 144, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 1 )
-region = Rect2( 168, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 1 )
-region = Rect2( 192, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 1 )
-region = Rect2( 216, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 1 )
-region = Rect2( 240, 0, 24, 32 )
-
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 7 )
-region = Rect2( 43, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 7 )
-region = Rect2( 86, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 7 )
-region = Rect2( 129, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 7 )
-region = Rect2( 172, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 7 )
-region = Rect2( 215, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 7 )
-region = Rect2( 258, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 7 )
-region = Rect2( 301, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 7 )
-region = Rect2( 344, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 7 )
-region = Rect2( 387, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 7 )
-region = Rect2( 430, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 7 )
-region = Rect2( 473, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 7 )
-region = Rect2( 516, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 7 )
-region = Rect2( 559, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=62]
-atlas = ExtResource( 7 )
-region = Rect2( 602, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=63]
-atlas = ExtResource( 7 )
-region = Rect2( 645, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=64]
-atlas = ExtResource( 7 )
-region = Rect2( 688, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=65]
-atlas = ExtResource( 7 )
-region = Rect2( 731, 0, 43, 37 )
-
-[sub_resource type="AtlasTexture" id=66]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 22, 32 )
-
-[sub_resource type="AtlasTexture" id=67]
-atlas = ExtResource( 6 )
-region = Rect2( 22, 0, 22, 32 )
-
-[sub_resource type="AtlasTexture" id=68]
-atlas = ExtResource( 6 )
-region = Rect2( 44, 0, 22, 32 )
-
-[sub_resource type="AtlasTexture" id=69]
-atlas = ExtResource( 6 )
-region = Rect2( 66, 0, 22, 32 )
-
-[sub_resource type="SpriteFrames" id=70]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack17.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack18.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack04.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack05.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack06.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack03.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack07.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack08.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack09.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack02.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack01.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack12.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack13.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack14.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack15.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack11.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Attack/Skeleton_Attack10.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit04.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit08.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit05.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit02.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit01.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit06.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Dmg_Taken/Skeleton_Hit07.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_React/Skeleton_React02.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_React/Skeleton_React03.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_React/Skeleton_React04.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death11.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death01.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death02.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death05.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death07.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death03.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death04.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death06.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death08.png" type="Texture" id=48]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death09.png" type="Texture" id=49]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death15.png" type="Texture" id=50]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death12.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death13.png" type="Texture" id=52]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Death/Skeleton_Death14.png" type="Texture" id=53]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle02.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle03.png" type="Texture" id=55]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle04.png" type="Texture" id=56]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle05.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle07.png" type="Texture" id=58]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle11.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle08.png" type="Texture" id=60]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle06.png" type="Texture" id=61]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle10.png" type="Texture" id=62]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Idle/Skeleton_Idle09.png" type="Texture" id=63]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk05.png" type="Texture" id=64]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk12.png" type="Texture" id=65]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk01.png" type="Texture" id=66]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk04.png" type="Texture" id=67]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk09.png" type="Texture" id=68]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk11.png" type="Texture" id=69]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk03.png" type="Texture" id=70]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk02.png" type="Texture" id=71]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk07.png" type="Texture" id=72]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk06.png" type="Texture" id=73]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk10.png" type="Texture" id=74]
+[ext_resource path="res://Assets/Sprites/Enemies/WalkEnemies/Sprite Sheets/Skeleton_Walk/Skeleton_Walk13.png" type="Texture" id=75]
+
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "Glare",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 66 ), ExtResource( 71 ), ExtResource( 70 ), ExtResource( 67 ), ExtResource( 64 ), ExtResource( 73 ), ExtResource( 72 ), ExtResource( 5 ), ExtResource( 68 ), ExtResource( 74 ), ExtResource( 69 ), ExtResource( 65 ), ExtResource( 75 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 44 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 4 ), ExtResource( 40 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 50 ) ],
 "loop": true,
 "name": "DeathAnim",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
-"loop": true,
-"name": "DamageTaken",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "Attack",
 "speed": 18.0
 }, {
-"frames": [ SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ) ],
+"frames": [ ExtResource( 34 ), ExtResource( 33 ), ExtResource( 3 ), ExtResource( 30 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 31 ) ],
 "loop": true,
-"name": "Glare",
-"speed": 5.0
+"name": "DamageTaken",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 61 ), ExtResource( 58 ), ExtResource( 60 ), ExtResource( 63 ), ExtResource( 62 ), ExtResource( 59 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 11.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=71]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 8.05586
 height = 11.1443
 
-[sub_resource type="CircleShape2D" id=72]
+[sub_resource type="CircleShape2D" id=3]
 radius = 105.0
 
-[sub_resource type="CircleShape2D" id=73]
+[sub_resource type="CircleShape2D" id=4]
 radius = 84.162
 
-[sub_resource type="CapsuleShape2D" id=74]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 6.79684
 height = 12.9079
 
-[sub_resource type="CapsuleShape2D" id=75]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 24.8626
 
-[sub_resource type="Animation" id=76]
+[sub_resource type="Animation" id=7]
 resource_name = "AttackAnim"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:playing")
@@ -380,7 +167,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=77]
+[sub_resource type="Animation" id=8]
 length = 1.5
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -408,20 +195,8 @@ tracks/1/keys = {
 "update": 1,
 "values": [ "DeathAnim" ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimatedSprite:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -8, 0 ) ]
-}
 
-[sub_resource type="Animation" id=78]
+[sub_resource type="Animation" id=9]
 length = 0.8
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -450,7 +225,7 @@ tracks/1/keys = {
 "values": [ "DamageTaken" ]
 }
 
-[sub_resource type="Animation" id=79]
+[sub_resource type="Animation" id=10]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -477,25 +252,37 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("DamageTakenArea2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+
+[sub_resource type="Animation" id=11]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 6.54, 0 ) ]
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
-[sub_resource type="Animation" id=80]
-length = 1.1
-loop = true
-
-[sub_resource type="Animation" id=81]
-loop = true
+[sub_resource type="Animation" id=12]
+resource_name = "Walk"
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -520,119 +307,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("DamageTakenArea2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 6.53963, 0 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "current_Body_Position"
-} ]
-}
-
-[sub_resource type="Animation" id=82]
-length = 13.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 4.9, 6.9, 11.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ "Walk", "Idle", "Walk", "Idle" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 6.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimatedSprite:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 6.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 2,
-"values": [ Vector2( -2.5, 0 ), Vector2( -10, 0 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 4.9, 6.9, 11.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "rightIdleWalk"
-}, {
-"args": [  ],
-"method": "idleCall"
-}, {
-"args": [  ],
-"method": "leftIdleWalk"
-}, {
-"args": [  ],
-"method": "idleCall"
-} ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("AnimatedSprite:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("DamageTakenArea2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 6.53963, 0 ) ]
-}
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "Skeleton",
@@ -641,17 +315,17 @@ collision_layer = 16
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 7.14226, 0 )
-frames = SubResource( 70 )
+position = Vector2( 0.792655, 0 )
+frames = SubResource( 1 )
 animation = "Walk"
-frame = 12
+frame = 7
 playing = true
 offset = Vector2( -8, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( -2.32922, 3.71627 )
-shape = SubResource( 71 )
+position = Vector2( -6.5568, 6.88644 )
+shape = SubResource( 2 )
 
 [node name="AlertArea2D" type="Area2D" parent="."]
 visible = false
@@ -659,7 +333,7 @@ collision_layer = 30
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlertArea2D"]
-shape = SubResource( 72 )
+shape = SubResource( 3 )
 
 [node name="ChaseArea2D" type="Area2D" parent="."]
 visible = false
@@ -667,7 +341,7 @@ collision_layer = 30
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea2D"]
-shape = SubResource( 73 )
+shape = SubResource( 4 )
 
 [node name="DamageTakenArea2D" type="Area2D" parent="."]
 position = Vector2( 6.53963, 0 )
@@ -675,8 +349,8 @@ collision_layer = 30
 script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTakenArea2D"]
-position = Vector2( -5.99123, 4.7622 )
-shape = SubResource( 74 )
+position = Vector2( -13.4997, 6.93131 )
+shape = SubResource( 5 )
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 visible = false
@@ -684,21 +358,20 @@ collision_layer = 30
 script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D"]
-shape = SubResource( 75 )
+shape = SubResource( 6 )
 
 [node name="AttackAreaCollider" type="Area2D" parent="AttackArea2D"]
 collision_layer = 30
 script = ExtResource( 12 )
 
 [node name="Animator" type="AnimationPlayer" parent="."]
-autoplay = "WalkAnim"
-anims/AttackAnim = SubResource( 76 )
-anims/DeathAnim = SubResource( 77 )
-anims/DmgTakenAnim = SubResource( 78 )
-anims/GlareAnim = SubResource( 79 )
-anims/IdleAnim = SubResource( 80 )
-anims/Walk = SubResource( 81 )
-anims/WalkAnim = SubResource( 82 )
+autoplay = "Idle"
+anims/AttackAnim = SubResource( 7 )
+anims/DeathAnim = SubResource( 8 )
+anims/DmgTakenAnim = SubResource( 9 )
+anims/GlareAnim = SubResource( 10 )
+anims/Idle = SubResource( 11 )
+anims/Walk = SubResource( 12 )
 
 [node name="AttackDuration" type="Timer" parent="."]
 [connection signal="body_entered" from="AlertArea2D" to="AlertArea2D" method="_on_AlertArea2D_body_entered"]
