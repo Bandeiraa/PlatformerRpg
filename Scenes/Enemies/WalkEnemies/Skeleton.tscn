@@ -111,7 +111,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.05586
-height = 11.1443
+height = 113.038
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 105.0
@@ -318,12 +318,11 @@ script = ExtResource( 2 )
 position = Vector2( 0.792655, 0 )
 frames = SubResource( 1 )
 animation = "DeathAnim"
-frame = 2
+frame = 9
 playing = true
 offset = Vector2( -8, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -6.5568, 6.88644 )
 shape = SubResource( 2 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Interface/HUD.gd" type="Script" id=2]
@@ -8,10 +8,42 @@
 [ext_resource path="res://Assets/Sprites/Interface/LeftDirectionButton.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Interface/AttackButton.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/Interface/JumpButton.png" type="Texture" id=8]
+[ext_resource path="res://GameoverContainer.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 5
 font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeScreen"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Gameover"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameoverContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="HUD" type="CanvasLayer" groups=[
 "GUI",
@@ -91,4 +123,25 @@ scale = Vector2( 0.6, 0.6 )
 normal = ExtResource( 8 )
 action = "Jump"
 
+[node name="GameoverContainer" parent="." instance=ExtResource( 9 )]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/FadeScreen = SubResource( 3 )
+anims/Gameover = SubResource( 2 )
+
+[node name="FadeScreen" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="GameoverContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
+[connection signal="pressed" from="GameoverContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+
 [editable path="ExpInterface"]
+
+[editable path="GameoverContainer"]

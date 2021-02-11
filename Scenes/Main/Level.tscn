@@ -49,5 +49,8 @@ shape = SubResource( 2 )
 [node name="AutoSave" type="Timer" parent="."]
 wait_time = 10.0
 [connection signal="save_level_info" from="." to="HUD" method="_on_Level_save_level_info"]
+[connection signal="sendGameover" from="Player/AnimatedSprite" to="HUD" method="_on_AnimatedSprite_sendGameover"]
 [connection signal="body_entered" from="Portal/FinalLevelPortal" to="." method="_on_FinalLevelPortal_body_entered"]
 [connection signal="timeout" from="AutoSave" to="." method="_on_AutoSave_timeout"]
+
+[editable path="Player"]

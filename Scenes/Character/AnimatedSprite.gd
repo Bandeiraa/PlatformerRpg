@@ -6,6 +6,7 @@ signal attack
 signal rightAttack
 signal attackFinished
 signal sendAttackDamage
+signal sendGameover
 
 var key = false
 var deathKey = false
@@ -61,7 +62,8 @@ func _on_Player_death():
 	
 	
 func game_Over():
-	get_tree().call_group("Gamecomponents", "game_over")
+	queue_free()
+	emit_signal("sendGameover")
 
 
 func _on_Player_took_damage():

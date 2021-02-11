@@ -55,3 +55,17 @@ func _on_Level_save_level_info():
 	print("Valor Salvo: ", expBar.value)
 	Saved.storedData.currentExpBarValue = expBar.value
 	Saved.save()
+
+
+func _on_AnimatedSprite_sendGameover():
+	$Animator.play("Gameover")
+
+
+func _on_TryAgainButton_pressed():
+	$Animator.play("FadeScreen")
+	yield(get_tree().create_timer(0.7), "timeout")
+	var _reload = get_tree().reload_current_scene()
+
+
+func _on_QuitButton_pressed():
+	get_tree().quit()
