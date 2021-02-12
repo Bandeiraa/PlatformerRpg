@@ -4,19 +4,18 @@
 [ext_resource path="res://Assets/Sprites/Interface/Joystick/JoystickArea2.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/Interface/Joystick/JoystickAreaPressed2.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 32.0
 
 [node name="Joystick" type="Sprite"]
-visible = false
-position = Vector2( 45, 150 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 48, 144 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="Joystick_button" type="TouchScreenButton" parent="."]
 position = Vector2( -10.6854, -8.78973 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 script = ExtResource( 1 )

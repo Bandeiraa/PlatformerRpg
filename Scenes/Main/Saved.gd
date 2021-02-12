@@ -5,8 +5,9 @@ const FILE_NAME = "res://save_data.save"
 #Default Values
 var position = Vector2() 
 var key = false
-var health = 5 
+var health = 50 
 var coins = 0
+var player_damage = 1
 var currentGameLevel = 1
 var currentPlayerLevel = 1
 var currentExpBarValue = 0
@@ -37,7 +38,8 @@ var storedData = {
 	"pos_x": position.x,
 	"pos_y": position.y,
 	"current_health": health,
-	"currentGameLevel": currentGameLevel
+	"currentGameLevel": currentGameLevel,
+	"player_damage": player_damage
 }
 
 func save():

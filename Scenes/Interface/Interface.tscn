@@ -33,13 +33,15 @@ margin_left = -90.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = 20.0
-value = 100.0
+max_value = 50.0
+value = 50.0
 
 [node name="HealthBar" parent="." instance=ExtResource( 1 )]
 margin_left = -90.0
 margin_top = 10.0
 margin_right = -10.0
-value = 100.0
+max_value = 50.0
+value = 50.0
 texture_under = null
 
 [node name="CoinIcon" type="AnimatedSprite" parent="."]
@@ -47,7 +49,7 @@ position = Vector2( 353.749, 32.893 )
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 1 )
 animation = "Flip"
-frame = 4
+frame = 1
 playing = true
 
 [node name="CoinCount" type="Label" parent="."]

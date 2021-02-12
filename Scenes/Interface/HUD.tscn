@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Interface/HUD.gd" type="Script" id=2]
@@ -8,13 +8,13 @@
 [ext_resource path="res://Assets/Sprites/Interface/LeftDirectionButton.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Sprites/Interface/AttackButton.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Sprites/Interface/JumpButton.png" type="Texture" id=8]
-[ext_resource path="res://GameoverContainer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GameoverContainer.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 5
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "FadeScreen"
 tracks/0/type = "value"
 tracks/0/path = NodePath("FadeScreen:modulate")
@@ -29,8 +29,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Gameover"
+[sub_resource type="Animation" id=3]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameoverContainer:modulate")
@@ -43,6 +42,47 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameoverContainer/QuitButton:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.001, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GameoverContainer/TryAgainButton:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hurt"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.568627, 0.266667, 0.266667, 0 ), Color( 0.721569, 0.203922, 0.203922, 0.435294 ), Color( 0.568627, 0.266667, 0.266667, 0 ) ]
 }
 
 [node name="HUD" type="CanvasLayer" groups=[
@@ -73,7 +113,7 @@ tint_progress = Color( 0.890196, 0.858824, 0.117647, 1 )
 
 [node name="CoinIcon" parent="ExpInterface" index="2"]
 visible = false
-frame = 1
+frame = 3
 
 [node name="CoinCount" parent="ExpInterface" index="3"]
 margin_left = 238.824
@@ -111,24 +151,31 @@ action = "Left"
 
 [node name="AttackButton" type="TouchScreenButton" parent="."]
 visible = false
-position = Vector2( 348, 136 )
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 328, 84 )
+scale = Vector2( 0.8, 0.8 )
 normal = ExtResource( 7 )
 action = "Attack"
 
 [node name="JumpButton" type="TouchScreenButton" parent="."]
 visible = false
-position = Vector2( 348, 164 )
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 291.49, 128 )
+scale = Vector2( 0.8, 0.8 )
 normal = ExtResource( 8 )
 action = "Jump"
 
-[node name="GameoverContainer" parent="." instance=ExtResource( 9 )]
+[node name="GameoverContainer" parent="." instance=ExtResource( 10 )]
 modulate = Color( 1, 1, 1, 0 )
 
+[node name="TryAgainButton" parent="GameoverContainer" index="1"]
+disabled = true
+
+[node name="QuitButton" parent="GameoverContainer" index="2"]
+disabled = true
+
 [node name="Animator" type="AnimationPlayer" parent="."]
-anims/FadeScreen = SubResource( 3 )
-anims/Gameover = SubResource( 2 )
+anims/FadeScreen = SubResource( 2 )
+anims/Gameover = SubResource( 3 )
+anims/hurt = SubResource( 4 )
 
 [node name="FadeScreen" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -136,6 +183,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.05176e-05
+margin_bottom = 1.52588e-05
+mouse_filter = 2
+color = Color( 0.568627, 0.266667, 0.266667, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

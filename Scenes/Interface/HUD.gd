@@ -23,7 +23,7 @@ func _ready():
 	expBar.max_value = (10 * level) * 1.5 
 	playerLevel.text = "Level: " + str(level)
 	expProgress.text = str(expBar.value) + "/" + str(expBar.max_value)
-	
+	update_GUI(Saved.storedData.current_health)
 	
 func update_GUI(lives_left):
 	healthBar.value = lives_left
@@ -54,6 +54,7 @@ func _on_Level_save_level_info():
 	Saved.storedData.currentPlayerLevel = level
 	print("Valor Salvo: ", expBar.value)
 	Saved.storedData.currentExpBarValue = expBar.value
+	Saved.storedData.current_health = healthBar.value
 	Saved.save()
 
 
@@ -63,9 +64,21 @@ func _on_AnimatedSprite_sendGameover():
 
 func _on_TryAgainButton_pressed():
 	$Animator.play("FadeScreen")
+	#var directory = Directory.new()
+	Saved.storedData.currentPlayerLevel = 1
+	Saved.storedData.coins = 0
+	Saved.storedData.currentGameLevel = 1
+	Saved.storedData.currentExpBarValue = 0
+	Saved.storedData.current_health = 50
+	Saved.storedData.player_damage = 1
+	Saved.save()
 	yield(get_tree().create_timer(0.7), "timeout")
 	var _reload = get_tree().reload_current_scene()
 
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
+
+
+func _on_Player_hurt():
+	$Animator.play("hurt")

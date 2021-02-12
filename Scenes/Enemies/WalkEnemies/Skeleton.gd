@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var animator = get_node("Animator")
+onready var damagePopup = preload("res://DamagePopup.tscn")
 
 signal dead
 
@@ -48,6 +49,7 @@ func on_Animation_Finished():
 	else:
 		print("Aqui")
 		
+		
 func idleCall():
 	key = false
 	
@@ -61,6 +63,9 @@ func current_Body_Position():
 func hurt():
 	playerDamage = get_node("../..").get_child(0).player_damage
 	skeleton_health -= playerDamage
+	var text = damagePopup.instance()
+	text.amount = playerDamage
+	add_child(text)
 	print(skeleton_health)
 	if skeleton_health <= 0:
 		deathKey = true
